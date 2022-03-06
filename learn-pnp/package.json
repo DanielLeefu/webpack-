@@ -11,5 +11,8 @@
     "pnp": true
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^4.5.0"
+  }
 }

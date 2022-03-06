@@ -1,5 +1,6 @@
 const path =require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
@@ -42,7 +43,8 @@ module.exports = {
       template: './src/index.html',
       filename: 'page3.html',
       chunks: ['page3'] // 往html页面里插入哪些资源文件
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ] 
 
 }

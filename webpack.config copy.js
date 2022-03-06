@@ -1,6 +1,8 @@
 const path =require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-module.exports = {
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
+const smw = new SpeedMeasureWebpackPlugin(); // 打包速度分析插件
+module.exports = smw.wrap({
   mode: 'development',
   devtool: 'inline-source-map',
   context: process.cwd(),
@@ -27,6 +29,20 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js'
   },
+  resolve: {
+    extensions: [".js", ".jsx", ".json", ".css"],
+    alias: {
+      bootstrap: bootstrap,
+    },
+    modules: [path.resolve(__dirname, "node_modules")],
+    mainFields: ["browser", "module", "main"],
+    mainFiles: ["index"]
+  },
+  resolveLoader: {
+    modules: ["node_modules"],
+    extensions: [".js",".json"],
+    mainFields: ["loader", "main"]
+  },
   plugins:[
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -45,4 +61,4 @@ module.exports = {
     })
   ] 
 
-}
+})

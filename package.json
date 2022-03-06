@@ -9,5 +9,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "webpack-bundle-analyzer": "^4.5.0"
+  }
 }
